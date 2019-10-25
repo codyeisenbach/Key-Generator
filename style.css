@@ -1,0 +1,57 @@
+
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    height: 70%;
+    width: 75%;
+    }
+
+#inner-border {
+display: flex;
+justify-content: center;
+border: 2px rgb(189, 189, 189);
+border-style: dashed;
+height: 40%;
+width: 100%;
+}
+
+#btn-red {
+
+border-radius: 50px;
+}
+
+#btn-grey {
+    
+    border-radius: 50px;
+    }
+.card-body {
+    flex: 1;
+    position: relative;
+}
+
+
+#buttons {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+  bottom: 0;
+  width: 90%;
+    
+}
+
+h5 {
+font-size: 20px;
+color: rgb(65, 65, 65);
+}
+
+h1 {
+font-size: 35px;
+color: darkgrey;
+}
