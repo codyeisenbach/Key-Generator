@@ -1,58 +1,146 @@
 
 
-var specialChars = ["!", "@", "#", "$", "%", "^", "&", "*"];
+var specialChars = "!@#$%^&*()?<>";
+var lowerChars = "abcdefghijklmnopqrstuvwxyz";
+var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numChars = "1234567890";
 var passLength = prompt("Select a password length between 8 and 128 characters");
 var shufflePass = [];
+var specialBln = false;
+var upperBln = false;
+var lowerBln = false;
+var numBln = false;
+var megaString = "";
+var password = [];
 
 
-function charPrompt() {
-    var charType = prompt("Choose a character type: Special, Lower Case, Upper Case, Numeric");
-    return charType;
+// Prompt logic
+function specialPrompt() {
+    var sPrompt = prompt("Would you like to include special characters?");
+    return sPrompt;
+};
+
+var specialAnswer = specialPrompt();
+
+
+if (specialAnswer == "yes" || specialAnswer == "y") {
+
+    specialBln = true;
+
 }
 
-var selectedType = charPrompt();
+// Prompt logic
+function lowerPrompt() {
+    var lPrompt = prompt("Would you like to include lower case characters?");
+    return lPrompt;
+};
 
-while (selectedType != "Special" && selectedType != "Lower Case" && selectedType != "Upper Case" && selectedType != "Numeric"
-    && selectedType != "special" && selectedType != "lower case" && selectedType != "upper case" && selectedType != "numeric") {
-    alert("you typed " + selectedType)
-    alert("Please choose a valid character type")
-    selectedType = charPrompt();
+var lowerAnswer = lowerPrompt();
+
+
+if (lowerAnswer == "yes" || lowerAnswer == "y") {
+
+    lowerBln = true;
+
+}
+
+// Prompt logic
+function upperPrompt() {
+    var uPrompt = prompt("Would you like to include upper case characters?");
+    return uPrompt;
+};
+
+var upperAnswer = upperPrompt();
+
+
+if (upperAnswer == "yes" || upperAnswer == "y") {
+
+    upperBln = true;
+
+}
+
+// Prompt logic
+function numPrompt() {
+    var nPrompt = prompt("Would you like to include numeric characters?");
+    return nPrompt;
+};
+
+var numAnswer = numPrompt();
+
+
+if (numAnswer == "yes" || numAnswer == "y") {
+
+    numBln = true;
+
+}
+
+
+function randomChar(array) {
+randomIndex = Math.floor(Math.random() * array.length);
+return array[randomIndex];
 };
 
 
+if (specialBln == true) {
+    megaString = megaString + specialChars;
+    password = password + randomChar(specialChars);
+    //megaString += specialChars;
+}
+
+if (lowerBln == true) {
+    megaString = megaString + lowerChars;
+    password = password + randomChar(lowerChars);
+}
+
+if (upperBln == true) {
+    megaString = megaString + upperChars;
+    password = password + randomChar(upperChars);
+}
+
+if (numBln == true) {
+    megaString = megaString + numChars;
+    password = password + randomChar(numChars);
+}
 
 
-if (selectedType == "Special" || selectedType == "special") {
+// Determines remaining password volume
+var charsRemaining = passLength - password.length;
 
-    function shuffle(specialChars) {
-        var currentIndex = specialChars.length, temporaryValue, randomIndex;
 
-        // While there remain elements to shuffle...
-        while (0 !== currentIndex) {
 
-            // Pick a remaining element...
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex -= 1;
+for (i = 0; i < charsRemaining; i++) {
+    password = password + randomChar(megaString);
+}
 
-            // And swap it with the current element.
-            temporaryValue = specialChars[currentIndex];
-            specialChars[currentIndex] = specialChars[randomIndex];
-            specialChars[randomIndex] = temporaryValue;
-        }
+console.log(password);
 
-        return specialChars;
+
+
+
+
+// Shuffle Function
+/*
+function shuffle(specialChars) {
+    var currentIndex = specialChars.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = specialChars[currentIndex];
+        specialChars[currentIndex] = specialChars[randomIndex];
+        specialChars[randomIndex] = temporaryValue;
     }
-};
 
-// Used like so
+    return specialChars;
+};
 
 specialChars = shuffle(specialChars);
 
-shufflePass.push(specialChars[0]);
-
-
-
-
-
-
+shufflePass.push(specialChars);
+*/
 
